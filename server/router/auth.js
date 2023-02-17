@@ -5,7 +5,7 @@ require("../db/conn");
 const User = require("../model/schema");
 
 router.get("/", (req, res) => {
-  res.send(`Hello from the home page`);
+  res.send("hogya bhai hogya");
 });
 
 // USING PROMISES (.then .catch)
@@ -59,6 +59,7 @@ router.post("/register", async (req, res) => {
       error: "Please fill all the fields",
     });
   }
+  if(password != cpassword) return res.status(422).json({error: "Confirm Password does not match Password"})
 
   try {
     // if user is already registered
@@ -86,5 +87,27 @@ router.post("/register", async (req, res) => {
     console.log(error);
   }
 });
+
+// LOGIN MODEL
+router.post("/signin", async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      res.status(400).json({ error: "Please enter all the fields" });
+    }
+
+    // The first email is the email in the DB and the second is entered by the user. If the email is found in the DB then match it's password
+    const userLogin = await User.findOne({email:email});
+    if(!userLogin) return res.status(401).json({error: "Wrong credentials"})
+
+    if(userLogin.password === password){
+      res.status(200).json({message: "Login successful"})
+    }else{
+      res.status(401).json({ error: "Wrong credentials" });
+    }
+  } catch (error) {
+    console.log(error)
+  }
+})
 
 module.exports = router;
