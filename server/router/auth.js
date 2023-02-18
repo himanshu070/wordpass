@@ -2,6 +2,7 @@ const express = require("express");
 const { findOne } = require("../model/schema");
 const bcrypt = require("bcrypt");
 const router = express();
+const validator = require("email-validator");
 require("../db/conn");
 const User = require("../model/schema");
 
@@ -51,7 +52,7 @@ router.get("/", (req, res) => {
 
 // });
 
-// USING ASYNC AWAIT
+// USING ASYNC AWAIT for user registration
 router.post("/register", async (req, res) => {
   const { name, email, phone, password, cpassword } = req.body;
   // if user does not fill all the fields
@@ -60,6 +61,10 @@ router.post("/register", async (req, res) => {
       error: "Please fill all the fields",
     });
   }
+  const validEmail = validator.validate(email);
+  if(!validEmail) return res
+    .status(422)
+    .json({ error: "Invalid Email Id" });
   if (password != cpassword)
     return res
       .status(422)
