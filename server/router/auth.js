@@ -1,4 +1,5 @@
 const express = require("express");
+const jwt = require("jsonwebtoken");
 const { findOne } = require("../model/schema");
 const bcrypt = require("bcrypt");
 const router = express();
@@ -10,7 +11,7 @@ router.get("/", (req, res) => {
   res.send("hogya bhai hogya");
 });
 
-// USING PROMISES (.then .catch)
+// USING PROMISES (using .then and .catch)
 // router.post("/register", (req, res) => {
 //   const {
 //     name,
@@ -100,13 +101,16 @@ router.post("/register", async (req, res) => {
   }
 });
 
+
+
 // LOGIN MODEL
 router.post("/signin", async (req, res) => {
   try {
+    let token;
     const { email, password } = req.body;
     if (!email || !password) {
       res.status(400).json({ error: "Please enter all the fields" });
-    }
+    } 
 
     // The first email is the email in the DB and the second is entered by the user. If the email is found in the DB then match it's password
     const userLogin = await User.findOne({ email: email });
@@ -114,6 +118,8 @@ router.post("/signin", async (req, res) => {
       return res.status(401).json({ error: "Invalid credentials" });
 
     const isMatch = await bcrypt.compare(password, userLogin.password);
+    token = await userLogin.generateAuthToken();
+    console.log(token)
     if (isMatch) {
       res.status(200).json({ message: "Login successful" });
     } else {
