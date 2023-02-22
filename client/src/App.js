@@ -1,17 +1,13 @@
-import React, { useState } from "react";
-import Navbar from "./components/Navbar";
+import logo from './logo.svg';
+import './App.css';
 
-const App = () => {
-  const [darkTheme, setDarkTheme] = useState(false);
+function App() {
   return (
     <>
-      <div className={darkTheme ? "dark" : ""}>
-        <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-200 min-h-screen">
-          <Navbar darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
-        </div>
-      </div>
+      <p>Hi mai hu don</p>
+      <h1 className="text-3xl font-bold underline">Hello world!</h1>
     </>
   );
-};
+}
 
 export default App;
