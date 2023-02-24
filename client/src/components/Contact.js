@@ -1,10 +1,11 @@
 import React from 'react'
+import { NavLink } from "react-router-dom";
 import brandlogo from "../images/brandlogo.svg"
 import Navbar from "./Navbar"
 const Contact = () => {
   return (
     <>
-    <Navbar/>
+      <Navbar />
       <div className=" flex flex-col md:flex-row lg:w-5/6 p-10 mx-auto font-montserrat overflow-hidden items-center justify-center mt-20">
         <div className=" flex flex-col items-center md:justify-center md:items-start md:w-1/3 mb-8 md:mb-0">
           <div className="ml-16">
@@ -19,10 +20,10 @@ const Contact = () => {
               Email: mishrahimanshu070@gmail.com
             </div>
           </div>
-          <button className=" mt-4 p-3 border-2 border-blue-600 rounded-lg text-blue-600 text-lg">
+          <NavLink className=" mt-4 p-3 border-2 border-blue-600 rounded-lg text-blue-600 text-lg hover:text-blue-100 hover:border-blue-100 hover:bg-blue-600" to="/dev">
             About Developer {`>`}
             <i className="fas fa-chevron-right ml-3"></i>
-          </button>
+          </NavLink>
         </div>
         <div className=" flex flex-col w-full md:w-2/3 md:pl-10">
           <div className=" text-3xl font-semibold">Send us a message</div>
@@ -65,7 +66,7 @@ const Contact = () => {
           <div className=" flex flex-row-reverse">
             <button
               type="submit"
-              className=" w-36 mt-4 py-3 bg-blue-600 rounded-lg text-white text-lg"
+              className=" w-36 mt-4 py-3 bg-blue-600 rounded-lg text-white text-lg hover:bg-blue-500"
             >
               Send
             </button>
