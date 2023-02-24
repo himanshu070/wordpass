@@ -1,19 +1,17 @@
 import React from 'react'
+import Lottie from 'lottie-react';
 import logo from "../images/logo192.png"
+import signupani from "../images/signup-ani.json";
+
 
 const Signup = () => {
   return (
     <div className=" lg:w-5/6 p-10 mx-auto font-montserrat overflow-hidden">
       <div className=" text-center text-4xl font-semibold">Sign Up</div>
-      <div className=" flex flex-col sm:flex-row mt-8">
-        <div className="flex sm:w-1/2 mb-5 sm:mb-0">
-          <div className=" my-auto">
-            <img
-              src={logo}
-              alt="Signup :)"
-              width="500"
-              height="300"
-            />
+      <div className=" flex flex-col sm:flex-row-reverse mt-8">
+        <div className="flex sm:w-1/2 mb-5 sm:mb-0 mx-10">
+          <div className=" my-auto ">
+            <Lottie loop={true} animationData={signupani} />
           </div>
         </div>
         <div className=" sm:w-1/2 sm:ml-10 my-auto">
@@ -44,7 +42,7 @@ const Signup = () => {
           ></input>
           <button
             type="submit"
-            className=" w-full mt-3 py-3 bg-blue-600 rounded-lg text-white text-lg"
+            className=" w-full mt-3 py-3 bg-blue-600 rounded-lg text-white text-lg m-1"
           >
             Send
           </button>
