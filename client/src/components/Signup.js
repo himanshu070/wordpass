@@ -1,6 +1,6 @@
 import React from 'react'
 import Lottie from 'lottie-react';
-import logo from "../images/logo192.png"
+import { NavLink } from "react-router-dom";
 import signupani from "../images/signup-ani.json";
 
 
@@ -14,7 +14,7 @@ const Signup = () => {
             <Lottie loop={true} animationData={signupani} />
           </div>
         </div>
-        <div className=" sm:w-1/2 sm:ml-10 my-auto">
+        <div className=" sm:w-1/2 sm:ml-10 my-auto flex flex-col">
           <input
             className=" w-full p-3 border-2 rounded-lg m-1"
             type="text"
@@ -42,10 +42,11 @@ const Signup = () => {
           ></input>
           <button
             type="submit"
-            className=" w-full mt-3 py-3 bg-blue-600 rounded-lg text-white text-lg m-1"
+            className=" w-full mt-3 py-3 bg-blue-600 rounded-lg text-white text-lg m-1 mb-2"
           >
             Send
           </button>
+          <NavLink to="/signin" className="pointer text-blue-600 ml-auto">Already have an account? Sign in</NavLink>
         </div>
       </div>
     </div>
