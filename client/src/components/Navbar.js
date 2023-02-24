@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 // import logo from "../../public/logo192.png"
-import logo from "../images/logo192.png"
+import logo from "../images/brandlogo.svg"
 
 
 const Navbar = ({ darkTheme, setDarkTheme }) => {
@@ -11,8 +11,9 @@ const Navbar = ({ darkTheme, setDarkTheme }) => {
     <>
       <nav className="shadow-sm bg-white p-5 w-full">
         <div className="flex items-center md:mx-20  justify-between">
-          <div className="flex-shrink-0 ">
-            <img src={logo} alt="logo" width="50" height="35" />
+          <div className="flex-shrink-0 flex align-bottom">
+            <img src={logo} alt="wordpass" width="40" height="25" />
+            <p className="mt-2 mr-px font-semibold">wordpass</p>
           </div>
           <div className="ml-10 hidden md:flex items-baseline space-x-8">
             <div className="cursor-pointer hover:text-blue-500 font-semibold py-2 text-md">
