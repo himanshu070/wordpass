@@ -20,16 +20,16 @@ const Navbar = ({ darkTheme, setDarkTheme }) => {
               <NavLink to="/">Home</NavLink>
             </div>
             <div className="cursor-pointer hover:text-blue-500 font-semibold py-2 text-md">
-              <NavLink to="about">About</NavLink>
+              <NavLink to="/generate">Generate Password</NavLink>
             </div>
             <div className="cursor-pointer hover:text-blue-500 font-semibold py-2 text-md">
-              <NavLink to="contact">Contact</NavLink>
+              <NavLink to="/contact">Contact</NavLink>
             </div>
             <div className="cursor-pointer hover:text-blue-500 font-semibold py-2 text-md">
-              <NavLink to="signin">Login</NavLink>
+              <NavLink to="/signin">Login</NavLink>
             </div>
             <div className="cursor-pointer hover:text-blue-500 font-semibold py-2 text-md">
-              <NavLink to="register">Signup</NavLink>
+              <NavLink to="/register">Signup</NavLink>
             </div>
           </div>
           <div className="md:hidden ">
@@ -85,16 +85,16 @@ const Navbar = ({ darkTheme, setDarkTheme }) => {
                 <NavLink to="/">Home</NavLink>
               </div>
               <div className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                <NavLink to="about">About</NavLink>
+                <NavLink to="/about">About</NavLink>
               </div>
               <div className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
                 <a href="contact">Contact</a>
               </div>
               <div className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                <NavLink to="signin">Login</NavLink>
+                <NavLink to="/signin">Login</NavLink>
               </div>
               <div className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                <NavLink to="register">Signup</NavLink>
+                <NavLink to="/register">Signup</NavLink>
               </div>
             </div>
           </div>

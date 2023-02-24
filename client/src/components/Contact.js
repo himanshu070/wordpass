@@ -1,73 +1,78 @@
 import React from 'react'
 import brandlogo from "../images/brandlogo.svg"
+import Navbar from "./Navbar"
 const Contact = () => {
   return (
-    <div className=" flex flex-col md:flex-row lg:w-5/6 p-10 mx-auto font-montserrat overflow-hidden items-center justify-center">
-      <div className=" flex flex-col items-center md:justify-center md:items-start md:w-1/3 mb-8 md:mb-0">
-        <div className="ml-16">
-          <img src={brandlogo} alt="wordpass" width="230" height="45" />
-        </div>
-        <div className=" text-lg font-light mt-8 mb-5">
-          Feel Free to Contact Us:
-        </div>
-        <div className=" text-lg">
-          <div>
-            <i className="fas fa-envelope-open text-blue-600 text-3xl  my-3 align-middle"></i>
-            Email: mishrahimanshu070@gmail.com
+    <>
+    <Navbar/>
+      <div className=" flex flex-col md:flex-row lg:w-5/6 p-10 mx-auto font-montserrat overflow-hidden items-center justify-center mt-20">
+        <div className=" flex flex-col items-center md:justify-center md:items-start md:w-1/3 mb-8 md:mb-0">
+          <div className="ml-16">
+            <img src={brandlogo} alt="wordpass" width="230" height="45" />
           </div>
-        </div>
-        <button className=" mt-4 p-3 border-2 border-blue-600 rounded-lg text-blue-600 text-lg">
-          About Developer {`>`}<i className="fas fa-chevron-right ml-3"></i>
-        </button>
-      </div>
-      <div className=" flex flex-col w-full md:w-2/3 md:pl-10">
-        <div className=" text-3xl font-semibold">Send us a message</div>
-        <div className=" flex mt-8">
-          <div className=" w-1/2 pr-2">
-            <input
-              type="text"
-              className=" w-full p-3 border-2 rounded-lg"
-              placeholder="Enter your name"
-            ></input>
+          <div className=" text-lg font-light mt-8 mb-5">
+            Feel Free to Contact Us:
           </div>
-          <div className=" w-1/2 pl-2">
-            <input
-              type="email"
-              className=" w-full p-3 border-2 rounded-lg"
-              placeholder="Email Address"
-            ></input>
+          <div className=" text-lg">
+            <div>
+              <i className="fas fa-envelope-open text-blue-600 text-3xl  my-3 align-middle"></i>
+              Email: mishrahimanshu070@gmail.com
+            </div>
           </div>
-        </div>
-        <div className=" flex my-4">
-          <div className=" w-1/2 pr-2">
-            <select className=" w-full p-3 border-2 rounded-lg text-gray-400">
-              <option>Feedback</option>
-              <option>Complaint</option>
-            </select>
-          </div>
-          <div className=" w-1/2 pl-2">
-            <input
-              type="email"
-              className=" w-full p-3 border-2 rounded-lg"
-              placeholder="Phone Number"
-            ></input>
-          </div>
-        </div>
-        <textarea
-          type="text"
-          className=" w-full p-3 border-2 rounded-lg"
-          placeholder="Description"
-        ></textarea>
-        <div className=" flex flex-row-reverse">
-          <button
-            type="submit"
-            className=" w-36 mt-4 py-3 bg-blue-600 rounded-lg text-white text-lg"
-          >
-            Send
+          <button className=" mt-4 p-3 border-2 border-blue-600 rounded-lg text-blue-600 text-lg">
+            About Developer {`>`}
+            <i className="fas fa-chevron-right ml-3"></i>
           </button>
         </div>
+        <div className=" flex flex-col w-full md:w-2/3 md:pl-10">
+          <div className=" text-3xl font-semibold">Send us a message</div>
+          <div className=" flex mt-8">
+            <div className=" w-1/2 pr-2">
+              <input
+                type="text"
+                className=" w-full p-3 border-2 rounded-lg"
+                placeholder="Enter your name"
+              ></input>
+            </div>
+            <div className=" w-1/2 pl-2">
+              <input
+                type="email"
+                className=" w-full p-3 border-2 rounded-lg"
+                placeholder="Email Address"
+              ></input>
+            </div>
+          </div>
+          <div className=" flex my-4">
+            <div className=" w-1/2 pr-2">
+              <select className=" w-full p-3 border-2 rounded-lg text-gray-400">
+                <option>Feedback</option>
+                <option>Complaint</option>
+              </select>
+            </div>
+            <div className=" w-1/2 pl-2">
+              <input
+                type="email"
+                className=" w-full p-3 border-2 rounded-lg"
+                placeholder="Phone Number"
+              ></input>
+            </div>
+          </div>
+          <textarea
+            type="text"
+            className=" w-full p-3 border-2 rounded-lg"
+            placeholder="Description"
+          ></textarea>
+          <div className=" flex flex-row-reverse">
+            <button
+              type="submit"
+              className=" w-36 mt-4 py-3 bg-blue-600 rounded-lg text-white text-lg"
+            >
+              Send
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
