@@ -59,17 +59,16 @@ router.post("/register", async (req, res) => {
   // if user does not fill all the fields
   if (!name || !email || !phone || !password || !cpassword) {
     return res.status(422).json({
+      status:422,
       error: "Please fill all the fields",
     });
   }
   const validEmail = validator.validate(email);
-  if(!validEmail) return res
-    .status(422)
-    .json({ error: "Invalid Email Id" });
+  if(!validEmail) return res.status(422).json({ status: 422, error: "Invalid Email Id" });
   if (password != cpassword)
     return res
       .status(422)
-      .json({ error: "Confirm Password does not match Password" });
+      .json({ status: 422, error: "Confirm Password does not match Password" });
 
   try {
     // if user is already registered
@@ -78,6 +77,7 @@ router.post("/register", async (req, res) => {
     });
     if (userExist) {
       return res.status(422).json({
+        status: 422,
         error: "This email already exists",
       });
     }
@@ -94,6 +94,7 @@ router.post("/register", async (req, res) => {
     await user.save();
 
     res.status(201).json({
+      status: 201,
       message: "User successfully registered",
     });
   } catch (error) {
@@ -135,4 +136,16 @@ router.post("/signin", async (req, res) => {
   }
 });
 
+//Contact Feedback
+// router.post("/contact", async (req, res)=>{
+//   try {
+//     const {feedback} = req.body;
+
+//     const user = new User({
+      
+//     })
+//   } catch (error) {
+//     console.log(error)
+//   }
+// })
 module.exports = router;

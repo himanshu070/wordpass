@@ -10,7 +10,7 @@ const Login = () => {
       <Navbar />
       <div className=" lg:w-5/6 mx-auto font-montserrat overflow-hidden">
         <div className=" text-center text-4xl font-semibold">Log In</div>
-        <div className=" flex flex-col sm:flex-row mt-8">
+        <div className=" flex flex-col sm:flex-row mt-8 px-10">
           <div className="flex sm:w-1/2 mb-5 sm:mb-0 mx-10">
             <div className=" my-auto ">
               <Lottie loop={true} animationData={signupani} />
@@ -33,7 +33,7 @@ const Login = () => {
             >
               Send
             </button>
-            <NavLink to="/register" className="pointer text-blue-600 ml-auto">
+            <NavLink to="/register" className="pointer text-blue-600 ml-auto pb-10">
               Don't have an account? Sign Up
             </NavLink>
           </div>

@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavLink } from "react-router-dom";
 import "../css/errorpage.css";
 import waves from "../images/waves.json"
 import Navbar from "./Navbar";

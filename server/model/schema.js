@@ -30,6 +30,13 @@ const userSchema = new mongoose.Schema({
       },
     },
   ],
+  // feedbacks: [
+  //   {
+  //     feedback: {
+  //       type: String
+  //     }
+  //   }
+  // ]
 });
 
 // middleware to hash the password and confirm password.. if password is modified, hash it with 12 character hash.
