@@ -110,29 +110,34 @@ router.post("/signin", async (req, res) => {
     let token;
     const { email, password } = req.body;
     if (!email || !password) {
-      res.status(400).json({ error: "Please enter all the fields" });
+      res.status(401).json({ status:401, error: "Please enter all the fields" });
     } 
 
     // The first email is the email in the DB and the second is entered by the user. If the email is found in the DB then match it's password
     const userLogin = await User.findOne({ email: email });
     if (!userLogin)
-      return res.status(401).json({ error: "Invalid credentials" });
+      return res
+        .status(401)
+        .json({ status: 401, error: "Invalid credentials" });
 
     const isMatch = await bcrypt.compare(password, userLogin.password);
-    token = await userLogin.generateAuthToken();
+    token = await userLogin.generateAuthToken0();
+    console.log("tOKEN IS:- ",token)
 
-    res.cookie("jwtoken", token, {
+    res.cookie("jwtokenOp", token, {
       expires: new Date(Date.now() + 2592000000),
       httpOnly: true
     });
     
     if (isMatch) {
-      res.status(200).json({ message: "Login successful" });
+      res.status(200).json({ status: 200, message: "Login successful" });
     } else {
-      res.status(401).json({ error: "Invalid credentials" });
+      res.status(401).json({ status: 401, error: "Invalid credentials" });
     }
   } catch (error) {
+    
     console.log(error);
+    console.error("error is");
   }
 });
 
