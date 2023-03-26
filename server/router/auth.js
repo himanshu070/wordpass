@@ -127,7 +127,7 @@ router.post("/signin", async (req, res) => {
     token = await userLogin.generateAuthToken();
     console.log("tOKEN IS:- ",token)
 
-    res.cookie("jwtokenOp", token, {
+    res.cookie("jwtoken", token, {
       expires: new Date(Date.now() + 2592000000),
       httpOnly: true
     });

@@ -31,7 +31,7 @@ const Login = () => {
     }
     else{
       window.alert("Login Successful");
-      // navigate("/");
+      navigate("/");
     }
   };
 

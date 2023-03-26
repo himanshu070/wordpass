@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(require("./router/auth"));
 
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 
 
