@@ -124,7 +124,7 @@ router.post("/signin", async (req, res) => {
         .json({ status: 401, error: "Invalid credentials" });
 
     const isMatch = await bcrypt.compare(password, userLogin.password);
-    token = await userLogin.generateAuthToken0();
+    token = await userLogin.generateAuthToken();
     console.log("tOKEN IS:- ",token)
 
     res.cookie("jwtokenOp", token, {

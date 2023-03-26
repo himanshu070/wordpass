@@ -7,6 +7,7 @@ import Errorpage from "./components/Errorpage";
 import Developer from "./components/Developer";
 import { Routes, Route } from "react-router-dom";
 import './App.css';
+import About from './components/About';
 
 function App() {
   // const [darkTheme, setDarkTheme] = useState(false);
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/signin" element={<Login />} />
         <Route exact path="/register" element={<Signup />} />
         <Route exact path="/dev" element={<Developer />} />
+        <Route exact path="/about" element={<About />} />
         <Route exact path="*" element={<Errorpage />} />
       </Routes>
     </>
