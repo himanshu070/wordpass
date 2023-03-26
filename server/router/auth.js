@@ -4,6 +4,9 @@ const { findOne } = require("../model/schema");
 const bcrypt = require("bcrypt");
 const router = express();
 const validator = require("email-validator");
+const authenticate = require("../middleware/authenticate")
+
+
 require("../db/conn");
 const User = require("../model/schema");
 
@@ -139,6 +142,10 @@ router.post("/signin", async (req, res) => {
     console.log(error);
     console.error("error is");
   }
+});
+
+router.get("/about", authenticate, (req, res) => {
+  res.send("hello from the server about");
 });
 
 //Contact Feedback

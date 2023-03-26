@@ -19,13 +19,9 @@ const PORT = process.env.PORT || 5000;
 
 
 
-// app.get('/', (req, res) => {
-//     res.send("hello from the server home");
+// app.get('/about', (req, res) => {
+//     res.send("hello from the server about");
 // })
-
-app.get('/about', (req, res) => {
-    res.send("hello from the server about");
-})
 app.get('/signup', (req, res) => {
     res.send("hello from the server register");
 })
