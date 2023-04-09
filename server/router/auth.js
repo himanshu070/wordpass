@@ -9,7 +9,7 @@ const authenticate = require("../middleware/authenticate");
 require("../db/conn");
 const User = require("../model/schema");
 
-router.get("/", (req, res) => {
+router.get("/", authenticate, (req, res) => {
   res.send("hogya bhai hogya");
 });
 
@@ -133,7 +133,9 @@ router.post("/signin", async (req, res) => {
           expires: new Date(Date.now() + 2592000000),
           httpOnly: true,
         });
-        res.status(200).json({ status: 200, message: "Login successful" });
+        res
+          .status(200)
+          .json({ status: 200, message: "Login successful", data: userLogin });
       } else {
         res.status(401).json({ status: 401, error: "Invalid credentials" });
       }
@@ -147,6 +149,12 @@ router.post("/signin", async (req, res) => {
 router.get("/about", authenticate, (req, res) => {
   res.send("hello from the server about");
 });
+
+//get user data for contact us and home page
+router.get("/getdata", (req, res)=>{
+  console.log("Get data route");
+  res.send(req.rootUser);
+})
 
 //Contact Feedback
 // router.post("/contact", async (req, res)=>{

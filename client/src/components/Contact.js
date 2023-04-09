@@ -1,8 +1,43 @@
-import React from 'react'
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from 'react'
+import { NavLink, useNavigate } from "react-router-dom";
 import brandlogo from "../images/brandlogo.svg"
 import Navbar from "./Navbar"
+
 const Contact = () => {
+  const [userData, setUserData] = useState({})
+
+  const callContactPage = async ()=>{
+    try {
+      const res = await fetch("/getdata", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await res.json();
+      console.log(data);
+      setUserData(data);
+      
+      if(!res.status===200){
+        const error = new Error(res.error);
+        throw error;
+      }
+
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    callContactPage();
+    const data =  localStorage.getItem("userData")
+    if(data)
+    {
+      setUserData(JSON.parse(data))
+    }
+  }, [])
+  
   return (
     <>
       <Navbar />
@@ -30,6 +65,7 @@ const Contact = () => {
           <div className=" flex mt-8">
             <div className=" w-1/2 pr-2">
               <input
+              value={userData?.name}
                 type="text"
                 className=" w-full p-3 border-2 rounded-lg"
                 placeholder="Enter your name"
@@ -37,6 +73,7 @@ const Contact = () => {
             </div>
             <div className=" w-1/2 pl-2">
               <input
+              value={userData?.email}
                 type="email"
                 className=" w-full p-3 border-2 rounded-lg"
                 placeholder="Email Address"
@@ -52,6 +89,7 @@ const Contact = () => {
             </div>
             <div className=" w-1/2 pl-2">
               <input
+              value={userData?.phone}
                 type="email"
                 className=" w-full p-3 border-2 rounded-lg"
                 placeholder="Phone Number"

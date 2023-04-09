@@ -22,17 +22,16 @@ const PORT = process.env.PORT || 3000;
 // app.get('/about', (req, res) => {
 //     res.send("hello from the server about");
 // })
-app.get('/signup', (req, res) => {
-    res.send("hello from the server register");
-})
-app.get('/signin', (req, res) => {
-    res.send("hello from the server login");
-})
-app.post("/register2", (req, res) => {
-  console.log(req.body);
-  // res.send("data add hogya")
-  res.json({ message: req.body });
-});
+// app.get('/signup', (req, res) => {
+//     res.send("hello from the server register");
+// })
+// app.get('/signin', (req, res) => {
+//     res.send("hello from the server login");
+// })
+// app.post("/register2", (req, res) => {
+//   console.log(req.body)
+//   res.json({ message: req.body });
+// });
 
 
 app.listen(`${PORT}`, ()=>{

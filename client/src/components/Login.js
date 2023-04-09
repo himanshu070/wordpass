@@ -24,13 +24,15 @@ const Login = () => {
         password,
       }),
     });
-    const data = res.json();
+    const data = await res.json();
 
     if(res.status===401 || !data){
       window.alert("Invalid Credentials");
     }
     else{
       window.alert("Login Successful");
+      console.log("Rrepinse is :- ",data)
+      localStorage.setItem("userData",JSON.stringify(data?.data))
       navigate("/");
     }
   };

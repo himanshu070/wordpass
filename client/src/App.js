@@ -8,13 +8,16 @@ import Developer from "./components/Developer";
 import { Routes, Route } from "react-router-dom";
 import './App.css';
 import About from './components/About';
+import { useState } from 'react';
 
 function App() {
   // const [darkTheme, setDarkTheme] = useState(false);
+  const [isLogin, setIsLogin] = useState(0);
+  
   return (
     <>
       <Routes>
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/" element={1 ? <Home /> : <Login />} />
         <Route exact path="/generate" element={<Generate />} />
         <Route exact path="/contact" element={<Contact />} />
         <Route exact path="/signin" element={<Login />} />
