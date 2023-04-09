@@ -1,26 +1,33 @@
 const jwt = require ("jsonwebtoken");
-const User = "../model/schema";
+const User = require("../model/schema");
 
 const Authenticate = async (req, res, next) =>{
     try{
-        const token = req.cookies.jwtoken;
-        const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
+      console.log("Tok en is :- ", req.cookies);
+      // const token = req.cookies.jwtoken;
+      const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDIzYzhiYmVlOGRmOTI1YWY0ZjA0MWEiLCJpYXQiOjE2ODA5MzUzNDN9.zgHKCtSCikpTXWKXKmJKvZ8_IPON87uBlVAd1SXTwts";
+      // {{"jwtoken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDIzYzhiYmVlOGRmOTI1YWY0ZjA0MWEiLCJpYXQiOjE2ODEwMjkxNjF9.SkjDMjPRrQ-KNEYWGExjUr426-TBZqzN2jCuo9wRrX8"}}
 
-        const rootUser = await User.findOne({ _id: verifyToken._id, "tokens.token": token});
+      const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
 
-        if(!rootUser){
-            throw new Error ('User not found');
-        }
+      const rootUser = await User.findOne({
+        _id: verifyToken._id,
+        "tokens.token": token,
+      });
 
-        req.token = token;
-        req.rootUser = rootUser;
-        req.userID = rootUser._id;
+      if (!rootUser) {
+        throw new Error("User not found");
+      }
 
-        next();
+      req.token = token;
+      req.rootUser = rootUser;
+      req.userID = rootUser._id;
+
+      next();
     }
     catch(err){
         res.status(401).send('Unauthorized: No token provided');
-        console.log(error);
+        console.log(err);
     }
 }
 

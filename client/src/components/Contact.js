@@ -4,7 +4,7 @@ import brandlogo from "../images/brandlogo.svg"
 import Navbar from "./Navbar"
 
 const Contact = () => {
-  const [userData, setUserData] = useState({})
+  const [userData, setUserData] = useState({name:"", email:"", phone:"", message:""})
 
   const callContactPage = async ()=>{
     try {
@@ -17,7 +17,12 @@ const Contact = () => {
 
       const data = await res.json();
       console.log(data);
-      setUserData(data);
+      setUserData({
+        ...userData,
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+      });
       
       if(!res.status===200){
         const error = new Error(res.error);
@@ -37,7 +42,46 @@ const Contact = () => {
       setUserData(JSON.parse(data))
     }
   }, [])
+
+  // to save the input in userData
+  const handleInput = (e)=>{
+     const name = e.target.name;
+     const value = e.target.value;
+
+     setUserData({...userData, [name]: value} )
+  }
   
+  // to submit the form
+  const submitForm = async (e)=>{
+    e.preventDefault();
+    
+    const {name, email, phone, message} = userData;
+
+    const res = await fetch("/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        email,
+        phone,
+        message,
+      })
+    });
+
+    const data = await res.json();
+
+    if(!data){
+      console.log("Message not sent");
+    }
+    else{
+      alert("Message sent successfully!")
+      setUserData({...userData, message:""})
+    }
+
+  }
+
   return (
     <>
       <Navbar />
@@ -55,7 +99,10 @@ const Contact = () => {
               Email: mishrahimanshu070@gmail.com
             </div>
           </div>
-          <NavLink className=" mt-4 p-3 border-2 border-blue-600 rounded-lg text-blue-600 text-lg hover:text-blue-100 hover:border-blue-100 hover:bg-blue-600" to="/dev">
+          <NavLink
+            className=" mt-4 p-3 border-2 border-blue-600 rounded-lg text-blue-600 text-lg hover:text-blue-100 hover:border-blue-100 hover:bg-blue-600"
+            to="/dev"
+          >
             About Developer {`>`}
             <i className="fas fa-chevron-right ml-3"></i>
           </NavLink>
@@ -65,18 +112,24 @@ const Contact = () => {
           <div className=" flex mt-8">
             <div className=" w-1/2 pr-2">
               <input
-              value={userData?.name}
+                method="POST"
+                value={userData?.name}
                 type="text"
                 className=" w-full p-3 border-2 rounded-lg"
                 placeholder="Enter your name"
+                onChange={handleInput}
+                name="name"
               ></input>
             </div>
             <div className=" w-1/2 pl-2">
               <input
-              value={userData?.email}
+                method="POST"
+                value={userData?.email}
                 type="email"
                 className=" w-full p-3 border-2 rounded-lg"
                 placeholder="Email Address"
+                onChange={handleInput}
+                name="email"
               ></input>
             </div>
           </div>
@@ -89,22 +142,30 @@ const Contact = () => {
             </div>
             <div className=" w-1/2 pl-2">
               <input
-              value={userData?.phone}
+                method="POST"
+                value={userData?.phone}
                 type="email"
                 className=" w-full p-3 border-2 rounded-lg"
                 placeholder="Phone Number"
+                onChange={handleInput}
+                name="phone"
               ></input>
             </div>
           </div>
           <textarea
+            method="POST"
             type="text"
             className=" w-full p-3 border-2 rounded-lg"
             placeholder="Description"
+            value={userData?.message}
+            onChange={handleInput}
+            name="message"
           ></textarea>
           <div className=" flex flex-row-reverse">
             <button
               type="submit"
               className=" w-36 mt-4 py-3 bg-blue-600 rounded-lg text-white text-lg hover:bg-blue-500"
+              onClick={submitForm}
             >
               Send
             </button>

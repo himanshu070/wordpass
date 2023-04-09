@@ -1,6 +1,6 @@
 const express = require("express");
 const jwt = require("jsonwebtoken");
-const { findOne } = require("../model/schema");
+// const { findOne } = require("../model/schema");
 const bcrypt = require("bcrypt");
 const router = express();
 const validator = require("email-validator");
@@ -168,4 +168,53 @@ router.get("/getdata", (req, res)=>{
 //     console.log(error)
 //   }
 // })
+
+//contact us page
+router.post("/contact",authenticate, async(req, res)=>{
+  try {
+   
+    const {name, email, phone, message} = req.body;
+
+    if(!name || !email || !phone || !message){
+      console.log("All fields in contact form not filled");
+      return res.json({error: "Please fill all the fields"})
+    }
+
+    const userContact = await User.findOne({ _id: req.userID });
+
+    if(userContact){
+      const userMessage = await userContact.addMessage(name, email, phone, message);
+      await userContact.save();
+      res.status(201).json({message: "User contact saved successfully"})
+    }
+
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+//add secret password page
+router.post("/secret", authenticate, async (req, res) => {
+  try {
+    const { website, secretpassword } = req.body;
+
+    if (!website, !secretpassword) {
+      console.log("All fields save password form not filled");
+      return res.json({ error: "Please fill all the fields" });
+    }
+
+    const userSecret = await User.findOne({ _id: req.userID });
+
+    if (userSecret) {
+      const userMessage = await userSecret.addSecret(
+        website, secretpassword
+      );
+       await userSecret.save();
+       res.status(201).json({ message: "User secret password saved successfully" });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;

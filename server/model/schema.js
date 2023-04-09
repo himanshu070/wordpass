@@ -30,13 +30,42 @@ const userSchema = new mongoose.Schema({
       },
     },
   ],
-  // feedbacks: [
-  //   {
-  //     feedback: {
-  //       type: String
-  //     }
-  //   }
-  // ]
+  date: {
+    type: Date,
+    default: Date.now,
+  },
+  messages: [
+    {
+      name: {
+        type: String,
+        required: true,
+      },
+      email: {
+        type: String,
+        required: true,
+      },
+      phone: {
+        type: Number,
+        required: true,
+      },
+      message: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
+  secret: [
+    {
+      website: {
+        type: String,
+        required: true,
+      },
+      secretpassword: {
+        type: String,
+        required: true,
+      },
+    },
+  ],
 });
 
 // middleware to hash the password and confirm password.. if password is modified, hash it with 12 character hash.
@@ -59,6 +88,29 @@ userSchema.methods.generateAuthToken = async function(){
     console.log(error);
   }
 }
+
+//store the message 
+userSchema.methods.addMessage = async function (name, email, phone, message){
+  try {
+    
+    this.messages = this.messages.concat({name, email, phone, message})
+    await this.save();
+    return this.messages;
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+//store the secret passwords of user 
+userSchema.methods.addSecret = async function (website, secretpassword) {
+  try {
+    this.secret = this.secret.concat({ website, secretpassword });
+    await this.save();
+    return this.secret;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 const User = mongoose.model('USER', userSchema);
 module.exports = User;
