@@ -1,13 +1,11 @@
 const jwt = require ("jsonwebtoken");
 const User = require("../model/schema");
+const cookieParser = require("cookie-parser");
 
 const Authenticate = async (req, res, next) =>{
     try{
-      console.log("Tok en is :- ", req.cookies);
-      // const token = req.cookies.jwtoken;
-      const token ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDIzYzhiYmVlOGRmOTI1YWY0ZjA0MWEiLCJpYXQiOjE2ODA5MzUzNDN9.zgHKCtSCikpTXWKXKmJKvZ8_IPON87uBlVAd1SXTwts";
-      // {{"jwtoken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDIzYzhiYmVlOGRmOTI1YWY0ZjA0MWEiLCJpYXQiOjE2ODEwMjkxNjF9.SkjDMjPRrQ-KNEYWGExjUr426-TBZqzN2jCuo9wRrX8"}}
-
+      const token = req.cookies.jwtoken;
+    
       const verifyToken = jwt.verify(token, process.env.SECRET_KEY);
 
       const rootUser = await User.findOne({

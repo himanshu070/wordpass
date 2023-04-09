@@ -151,8 +151,7 @@ router.get("/about", authenticate, (req, res) => {
 });
 
 //get user data for contact us and home page
-router.get("/getdata", (req, res)=>{
-  console.log("Get data route");
+router.get("/getdata", authenticate, (req, res)=>{
   res.send(req.rootUser);
 })
 

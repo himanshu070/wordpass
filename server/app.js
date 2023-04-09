@@ -3,6 +3,7 @@ const mongoose = require("mongoose")
 const express = require("express")
 const app = express();
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 
 dotenv.config({path: './config.env'})
@@ -12,6 +13,7 @@ require('./db/conn');
 // linking the router file
 
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(require("./router/auth"));
 
 
