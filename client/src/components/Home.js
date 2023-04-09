@@ -19,12 +19,12 @@ const Home = () => {
        const data = await res.json();
        setUserName(data.name);
 
-       console.log("data is ", data);
        if(!data)
-        navigate("/signin")
+        navigate("/signin");
 
      } catch (error) {
        console.log(error);
+       navigate("/signin");
      }
    };
 
