@@ -2,7 +2,7 @@ import React from 'react'
 import AddNote from './AddNote'
 import Note from './Note'
 
-const NotesList = ({ secretList, callContactPage }) => {
+const NotesList = ({ secretList, callContactPage, searchText }) => {
   return (
     <div className="notes-list flex flex-wrap justify-center">
       {secretList.map((item) => (

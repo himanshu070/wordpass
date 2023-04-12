@@ -27,6 +27,11 @@ const AddNote = ({ callContactPage }) => {
 
     const data = await res.json();
 
+    if(!website || !secretpassword){
+      alert("Please fill both website and password fields");
+      return;
+    }
+
     if (!data) {
       console.log("Website and Password not set");
     } else {
@@ -59,9 +64,8 @@ const AddNote = ({ callContactPage }) => {
         onChange={handlePassChange}
       ></textarea>
 
-      <div className="note-footer">
-        <small>200 Remaining</small>
-        <button className="save" onClick={submitForm}>
+      <div className=" flex justify-center items-center">
+        <button className="save w-60" onClick={submitForm}>
           save
         </button>
       </div>
