@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import { useEffect } from 'react';
 import { NavLink, useNavigate } from "react-router-dom";
 import NotesList from './NotesList';
+import AddNote from './AddNote';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -41,10 +42,10 @@ const Home = () => {
     <>
       <Navbar />
       <div className=" notes-container mx-2">
-        <div className=''>
+        <div className="">
           <h1 className="font-bold text-gray-600">Welcome back, {userName}</h1>
           <div className="search-box">
-{/* <form class="flex items-center">   
+            {/* <form class="flex items-center">   
     <label for="simple-search" class="sr-only">Search</label>
     <div class="relative w-full">
         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -59,7 +60,7 @@ const Home = () => {
 </form> */}
           </div>
         </div>
-        <NotesList secretList={secretList}/>
+        <NotesList secretList={secretList} callContactPage={callContactPage}/>
       </div>
     </>
   );

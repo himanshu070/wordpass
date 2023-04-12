@@ -140,7 +140,13 @@ input[type='number'] {
 }
 
 .note.new {
-  background-color: #67d7cc;
+  background-color: #b9bbdc;
+}
+.note.new textarea{
+  border: none;
+  resize: none;
+  white-space: nowrap;
+  overflow:hidden;
 }
 
 /* textarea {
@@ -166,7 +172,7 @@ textarea:focus {
 }
 
 .note {
-  background-color: #dee4ea;
+  background-color: #bbc6d1;
   border-radius: 10px;
   padding: 1rem;
   min-height: 170px;
