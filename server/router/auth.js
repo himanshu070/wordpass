@@ -216,4 +216,10 @@ router.post("/secret", authenticate, async (req, res) => {
   }
 });
 
+//Logout route
+router.get("/logout", (req, res) => {
+  res.clearCookie('jwtoken', {path: '/'});
+  res.status(200).send("User logged out");
+});
+
 module.exports = router;

@@ -9,6 +9,7 @@ import { Routes, Route } from "react-router-dom";
 import './App.css';
 import About from './components/About';
 import { useState } from 'react';
+import Logout from './components/Logout';
 
 function App() {
   // const [darkTheme, setDarkTheme] = useState(false);
@@ -24,6 +25,7 @@ function App() {
         <Route exact path="/register" element={<Signup />} />
         <Route exact path="/dev" element={<Developer />} />
         <Route exact path="/about" element={<About />} />
+        <Route exact path="/logout" element={<Logout />} />
         <Route exact path="*" element={<Errorpage />} />
       </Routes>
     </>

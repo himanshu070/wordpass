@@ -31,6 +31,9 @@ const Navbar = ({ darkTheme, setDarkTheme }) => {
             <div className="cursor-pointer hover:text-blue-500 font-semibold py-2 text-md">
               <NavLink to="/register">Signup</NavLink>
             </div>
+            <div className="cursor-pointer hover:text-blue-500 font-semibold py-2 text-md">
+              <NavLink to="/logout">Logout</NavLink>
+            </div>
           </div>
           <div className="md:hidden ">
             <button
@@ -95,6 +98,9 @@ const Navbar = ({ darkTheme, setDarkTheme }) => {
               </div>
               <div className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
                 <NavLink to="/register">Signup</NavLink>
+              </div>
+              <div className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                <NavLink to="/logout">Logout</NavLink>
               </div>
             </div>
           </div>

@@ -25,6 +25,7 @@ const Home = () => {
       const data = await res.json();
       setUserName(data.name);
       setSecretList(data.secret);
+      setSecretListShow(data.secret);
 
       //  console.log("secret list is", secretList);
 
