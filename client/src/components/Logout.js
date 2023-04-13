@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { NavLink, useNavigate } from "react-router-dom";
 
+import { UserContext } from "../App";
+
 const Logout = () => {
+  const { state, dispatch } = useContext(UserContext);
     const navigate = useNavigate();
 
     const callLogoutPage = async () => {
@@ -17,6 +20,7 @@ const Logout = () => {
           const error = new Error(res.error);
           throw error;
         }
+        dispatch({ type: "USER", payload: false });
         navigate("/signin")
 
       } catch (error) {

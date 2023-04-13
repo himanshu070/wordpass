@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 
 const AddNote = ({ callContactPage }) => {
   const [website, setWebsite] = useState("");
@@ -43,7 +43,7 @@ const AddNote = ({ callContactPage }) => {
   };
 
   return (
-    <div className="note new">
+    <div className="note new my-6">
       {/* <textarea name="website" id="website" cols="1" rows="1" placeholder='Website Name'></textarea>
         <textarea name="website" id="website" cols="1" rows="1" placeholder='Password'></textarea> */}
 

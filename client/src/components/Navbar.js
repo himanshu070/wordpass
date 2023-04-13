@@ -1,11 +1,12 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 // import logo from "../../public/logo192.png"
 import logo from "../images/brandlogo.svg"
-
+import { UserContext } from "../App";
 
 const Navbar = ({ darkTheme, setDarkTheme }) => {
+    const { state, dispatch } = useContext(UserContext);
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
@@ -25,15 +26,22 @@ const Navbar = ({ darkTheme, setDarkTheme }) => {
             <div className="cursor-pointer hover:text-blue-500 font-semibold py-2 text-md">
               <NavLink to="/contact">Contact</NavLink>
             </div>
-            <div className="cursor-pointer hover:text-blue-500 font-semibold py-2 text-md">
-              <NavLink to="/signin">Login</NavLink>
-            </div>
-            <div className="cursor-pointer hover:text-blue-500 font-semibold py-2 text-md">
-              <NavLink to="/register">Signup</NavLink>
-            </div>
-            <div className="cursor-pointer hover:text-blue-500 font-semibold py-2 text-md">
-              <NavLink to="/logout">Logout</NavLink>
-            </div>
+            {!state ? (
+              <>
+                <div className="cursor-pointer hover:text-blue-500 font-semibold py-2 text-md">
+                  <NavLink to="/signin">Login</NavLink>
+                </div>
+                <div className="cursor-pointer hover:text-blue-500 font-semibold py-2 text-md">
+                  <NavLink to="/register">Signup</NavLink>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="cursor-pointer hover:text-blue-500 font-semibold py-2 text-md">
+                  <NavLink to="/logout">Logout</NavLink>
+                </div>
+              </>
+            )}
           </div>
           <div className="md:hidden ">
             <button
@@ -93,15 +101,22 @@ const Navbar = ({ darkTheme, setDarkTheme }) => {
               <div className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
                 <a href="contact">Contact</a>
               </div>
-              <div className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                <NavLink to="/signin">Login</NavLink>
-              </div>
-              <div className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                <NavLink to="/register">Signup</NavLink>
-              </div>
-              <div className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                <NavLink to="/logout">Logout</NavLink>
-              </div>
+              {!state ? (
+                <>
+                  <div className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                    <NavLink to="/signin">Login</NavLink>
+                  </div>
+                  <div className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                    <NavLink to="/register">Signup</NavLink>
+                  </div>
+                </>
+              ) : (
+                <>
+                  <div className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                    <NavLink to="/logout">Logout</NavLink>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         )}

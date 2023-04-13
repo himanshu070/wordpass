@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Lottie from "lottie-react";
 import { NavLink, useNavigate } from "react-router-dom";
 import signupani from "../images/login-ani.json";
 import Navbar from "./Navbar";
 
+import { UserContext } from "../App";
+
 
 const Login = () => {
+  const {state, dispatch} = useContext(UserContext);
+
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -30,6 +34,7 @@ const Login = () => {
       window.alert("Invalid Credentials");
     }
     else{
+      dispatch({type:"USER", payload:true})
       window.alert("Login Successful");
       console.log("Rrepinse is :- ",data)
       localStorage.setItem("userData",JSON.stringify(data?.data))
