@@ -4,6 +4,8 @@ const express = require("express")
 const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
+
 
 
 dotenv.config({path: './config.env'})
@@ -15,6 +17,7 @@ require('./db/conn');
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(require("./router/auth"));
+app.use(cors());
 
 
 const PORT = process.env.PORT || 3000;
