@@ -23,7 +23,7 @@ const Signup = () => {
      e.preventDefault();
      const {name, email, phone, password, cpassword} = user;
 
-     const res = await fetch("/register", {
+     const res = await fetch("https://wordpass.onrender.com/register", {
        method: "POST",
        headers: {
          "Content-Type": "application/json",

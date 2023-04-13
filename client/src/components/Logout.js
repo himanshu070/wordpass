@@ -9,7 +9,7 @@ const Logout = () => {
 
     const callLogoutPage = async () => {
       try {
-        const res = await fetch("/logout", {
+        const res = await fetch("https://wordpass.onrender.com/logout", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

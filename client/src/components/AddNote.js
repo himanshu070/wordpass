@@ -14,7 +14,7 @@ const AddNote = ({ callContactPage }) => {
   const submitForm = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("/secret", {
+    const res = await fetch("https://wordpass.onrender.com/secret", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

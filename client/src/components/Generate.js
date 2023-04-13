@@ -8,7 +8,7 @@ const Generate = () => {
 
   const callContactPage = async () => {
     try {
-      const res = await fetch("/getdata", {
+      const res = await fetch("https://wordpass.onrender.com/getdata", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

@@ -18,7 +18,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("/signin", {
+    const res = await fetch("https://wordpass.onrender.com/signin", {
       method: "POST",
       headers: {
         "Content-Type": "application/JSON",
